@@ -1,0 +1,18 @@
+{
+    "batchid":"OL/WADA/ACSL-M/04/01",
+    "round":"04",
+    "title":"web application development",
+    "sub-title":"using ASP.NET",
+    "modules":[
+        {
+            "module": "01", 
+            "title":"computer fundamental",
+            "quizzes":[
+                {"serial": 1,"date":"Mar 16, 2021", "coverage":"some details coverage", "path":"/CF01/"},
+                {"serial": 2,"date":"Mar 16, 2021", "coverage":"some details coverage", "path":"/CF01/"},
+                {"serial": 3,"date":"Mar 16, 2021", "coverage":"some details coverage", "path":"/CF01/"},
+                {"serial": 4,"date":"Mar 16, 2021", "coverage":"some details coverage", "path":"/CF01/"}
+            ]
+        }
+    ]
+}

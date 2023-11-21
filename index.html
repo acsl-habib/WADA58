@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          />
+          <title>ACSL: Online Quiz Application</title>
+          <link
+               rel="stylesheet"
+               href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          />
+          <link rel="stylesheet" href="./css/metro-all.min.css" />
+          <link rel="stylesheet" href="./css/metro-colors.min.css" />
+          <link rel="stylesheet" href="./css/style.css" />
+          <style>
+               body {
+                    padding-top: 60px;
+               }
+          </style>
+     </head>
+     <body>
+          <div
+               data-role="appbar"
+               data-expand-point="md"
+               class="bg-white fg-black border-bottom bd-lightGray py-1"
+          >
+               <button type="button" class="hamburger menu-down dark">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+               </button>
+               <a href="#" class="brand no-hover">
+                    <span
+                         style="width: 150px"
+                         class="
+                              text-center
+                              border
+                              bd-gray
+                              border-radius
+                              bg-white
+                              fg-black
+                         "
+                    >
+                         quiz<sup>AT</sup> online
+                    </span>
+               </a>
+
+               <ul class="app-bar-menu">
+                    <li><a href="./index.html">Home</a></li>
+
+                    <li><a href="./howto.html">How to</a></li>
+               </ul>
+          </div>
+          <div class="container-fluid mt-4">
+               <div class="card mx-auto" style="width: 97.5%">
+                    <div class="card-header ribbed-darkTeal fg-white">
+                         <div class="title">quiz<sup>AT</sup> online</div>
+                         <div class="subtitle">online assessment system</div>
+                    </div>
+                    <div class="card-content p-4">
+                         <p>
+                              Used for tracking trainees' progress and
+                              understanding of lesson. If you are here for the
+                              first time, please see the
+                              <span class="text-bold">How to</span> video
+                         </p>
+                    </div>
+                    <!-- <div class="card-footer">Card Footer</div> -->
+               </div>
+               <div
+                    class="icon-box border bd-default mx-auto"
+                    style="width: 97.5%"
+               >
+                    <div class="icon bg-green fg-white">
+                         <span class="mif-dashboard"></span>
+                    </div>
+                    <div class="content p-4">
+                         <div class="title">Quiz dashboard</div>
+                         <div class="subtitle mt-2">
+                              <sup>ol</sup>web apllications development
+                              <small>using asp.net</small> [58]
+                         </div>
+                    </div>
+               </div>
+               
+               <!-- M1 -->
+               <div class="card mx-auto" style="width: 97.5%">
+                    <div
+                         class="card-header bg-olive fg-white"
+                         id="WADA-58-card-header-m1"
+                    >
+                         <!-- <div class="title">computer fundamental</div>
+        <div class="subtitle">module 01</div> -->
+                    </div>
+                    <div
+                         class="card-content p-1"
+                         id="WADA-58-card-content-m1"
+                    ></div>
+                    <!-- <div class="card-footer">Card Footer</div> -->
+               </div>
+          </div>
+
+          <script src="./js/metro.min.js"></script>
+          <script>
+               $.json("data/data.json").then(function (data) {
+                    console.log(data); // this is json object
+                    data.forEach((v, i) => {
+                         console.log(v);
+                         //M1
+                         let q = v.quizzes.filter((x) => x.module == "01");
+
+                         if (q.length > 0) {
+                              let d1 = $(
+                                   `<div>${v.title} <sup>${v.round}</sup> quiz</div>`,
+                                   {
+                                        class: "title",
+                                   }
+                              );
+                              console.log(q);
+                              let d2 = $(
+                                   `<div>module ${v.quizzes[0].module}</div>`,
+                                   {
+                                        class: "subtitle",
+                                   }
+                              );
+                              console.log($(`div#${v.batch}-card-header-m1`));
+                              console.log(q);
+                              d1.appendTo($(`div#${v.batch}-card-header-m1`));
+                              d2.appendTo($(`div#${v.batch}-card-header-m1`));
+                              let ql = $("<ol>", { class: "ql" });
+                              q.forEach((x, i) => {
+                                   let li = $("<li>", { class: "ql-li" });
+                                   let num = $(`<span>${x.no}</span>`, {
+                                        class: "num fg-crimson",
+                                   });
+                                   let date = $(`<span>${x.date}</span>`, {
+                                        class: "date bg-olive fg-white",
+                                   });
+                                   let detail = $(`<div>${x.coverage}</div>`, {
+                                        class: "detail",
+                                   });
+                                   let action = $(`<a></a>`, {
+                                        class: "action ribbed-crimson fg-white",
+                                        href: `${x.folder}`,
+                                   });
+                                   let t = $(`<span>Try</span>`);
+                                   let ar = $(`<i></i>`, {
+                                        class: "mif-chevron-right mif-3x",
+                                   });
+                                   t.appendTo(action);
+                                   ar.appendTo(action);
+                                   num.appendTo(li);
+                                   date.appendTo(li);
+                                   detail.appendTo(li);
+                                   action.appendTo(li);
+                                   li.appendTo(ql);
+                              });
+                              ql.appendTo($(`div#${v.batch}-card-content-m1`));
+                         }
+                         //M2
+                         let q1 = v.quizzes.filter((x) => x.module == "02");
+                         if (q1.length > 0) {
+                              let d1 = $(
+                                   `<div>${v.title} <sup>${v.round}</sup> quiz</div>`,
+                                   {
+                                        class: "title",
+                                   }
+                              );
+                              let d2 = $(`<div>module 02</div>`, {
+                                   class: "subtitle",
+                              });
+                              console.log($(`div#${v.batch}-card-header-m2`));
+                              console.log(q1);
+                              d1.appendTo($(`div#${v.batch}-card-header-m2`));
+                              d2.appendTo($(`div#${v.batch}-card-header-m2`));
+                              let ql = $("<ol>", { class: "ql" });
+                              q1.forEach((x, i) => {
+                                   let li = $("<li>", { class: "ql-li" });
+                                   let num = $(`<span>${x.no}</span>`, {
+                                        class: "num fg-crimson",
+                                   });
+                                   let date = $(`<span>${x.date}</span>`, {
+                                        class: "date bg-olive fg-white",
+                                   });
+                                   let detail = $(`<div>${x.coverage}</div>`, {
+                                        class: "detail",
+                                   });
+                                   let action = $(`<a></a>`, {
+                                        class: "action ribbed-crimson fg-white",
+                                        href: `${x.folder}`,
+                                   });
+                                   let t = $(`<span>Try</span>`);
+                                   let ar = $(`<i></i>`, {
+                                        class: "mif-chevron-right mif-3x",
+                                   });
+                                   t.appendTo(action);
+                                   ar.appendTo(action);
+                                   num.appendTo(li);
+                                   date.appendTo(li);
+                                   detail.appendTo(li);
+                                   action.appendTo(li);
+                                   li.appendTo(ql);
+                              });
+                              ql.appendTo($(`div#${v.batch}-card-content-m2`));
+                         }
+                         //M3
+                         let q2 = v.quizzes.filter((x) => x.module == "03");
+                         if (q2.length > 0) {
+                              let d1 = $(
+                                   `<div>${v.title} <sup>${v.round}</sup> quiz</div>`,
+                                   {
+                                        class: "title",
+                                   }
+                              );
+                              let d2 = $(`<div>module 03</div>`, {
+                                   class: "subtitle",
+                              });
+                              console.log($(`div#${v.batch}-card-header-m3`));
+                              console.log(q1);
+                              d1.appendTo($(`div#${v.batch}-card-header-m3`));
+                              d2.appendTo($(`div#${v.batch}-card-header-m3`));
+                              let ql = $("<ol>", { class: "ql" });
+                              q2.forEach((x, i) => {
+                                   let li = $("<li>", { class: "ql-li" });
+                                   let num = $(`<span>${x.no}</span>`, {
+                                        class: "num fg-crimson",
+                                   });
+                                   let date = $(`<span>${x.date}</span>`, {
+                                        class: "date bg-olive fg-white",
+                                   });
+                                   let detail = $(`<div>${x.coverage}</div>`, {
+                                        class: "detail",
+                                   });
+                                   let action = $(`<a></a>`, {
+                                        class: "action ribbed-crimson fg-white",
+                                        href: `${x.folder}`,
+                                   });
+                                   let t = $(`<span>Try</span>`);
+                                   let ar = $(`<i></i>`, {
+                                        class: "mif-chevron-right mif-3x",
+                                   });
+                                   t.appendTo(action);
+                                   ar.appendTo(action);
+                                   num.appendTo(li);
+                                   date.appendTo(li);
+                                   detail.appendTo(li);
+                                   action.appendTo(li);
+                                   li.appendTo(ql);
+                              });
+                              ql.appendTo($(`div#${v.batch}-card-content-m3`));
+                         }
+                         //m4
+
+                         let q3 = v.quizzes.filter((x) => x.module == "04");
+                         if (q3.length > 0) {
+                              let d1 = $(
+                                   `<div>${v.title} <sup>${v.round}</sup> quiz</div>`,
+                                   {
+                                        class: "title",
+                                   }
+                              );
+                              let d2 = $(`<div>module 04</div>`, {
+                                   class: "subtitle",
+                              });
+                              console.log($(`div#${v.batch}-card-header-m4`));
+                              console.log(q3);
+                              d1.appendTo($(`div#${v.batch}-card-header-m4`));
+                              d2.appendTo($(`div#${v.batch}-card-header-m4`));
+                              let ql = $("<ol>", { class: "ql" });
+                              q3.forEach((x, i) => {
+                                   let li = $("<li>", { class: "ql-li" });
+                                   let num = $(`<span>${x.no}</span>`, {
+                                        class: "num fg-crimson",
+                                   });
+                                   let date = $(`<span>${x.date}</span>`, {
+                                        class: "date bg-olive fg-white",
+                                   });
+                                   let detail = $(`<div>${x.coverage}</div>`, {
+                                        class: "detail",
+                                   });
+                                   let action = $(`<a></a>`, {
+                                        class: "action ribbed-crimson fg-white",
+                                        href: `${x.folder}`,
+                                   });
+                                   let t = $(`<span>Try</span>`);
+                                   let ar = $(`<i></i>`, {
+                                        class: "mif-chevron-right mif-3x",
+                                   });
+                                   t.appendTo(action);
+                                   ar.appendTo(action);
+                                   num.appendTo(li);
+                                   date.appendTo(li);
+                                   detail.appendTo(li);
+                                   action.appendTo(li);
+                                   li.appendTo(ql);
+                              });
+                              ql.appendTo($(`div#${v.batch}-card-content-m4`));
+                         }
+                         //m5
+                         let q4 = v.quizzes.filter((x) => x.module == "05");
+                         if (q4.length > 0) {
+                              let d1 = $(
+                                   `<div>${v.title} <sup>${v.round}</sup> quiz</div>`,
+                                   {
+                                        class: "title",
+                                   }
+                              );
+                              let d2 = $(`<div>module 05</div>`, {
+                                   class: "subtitle",
+                              });
+                              console.log($(`div#${v.batch}-card-header-m5`));
+                              console.log(q4);
+                              d1.appendTo($(`div#${v.batch}-card-header-m5`));
+                              d2.appendTo($(`div#${v.batch}-card-header-m5`));
+                              let ql = $("<ol>", { class: "ql" });
+                              q4.forEach((x, i) => {
+                                   let li = $("<li>", { class: "ql-li" });
+                                   let num = $(`<span>${x.no}</span>`, {
+                                        class: "num fg-crimson",
+                                   });
+                                   let date = $(`<span>${x.date}</span>`, {
+                                        class: "date bg-olive fg-white",
+                                   });
+                                   let detail = $(`<div>${x.coverage}</div>`, {
+                                        class: "detail",
+                                   });
+                                   let action = $(`<a></a>`, {
+                                        class: "action ribbed-crimson fg-white",
+                                        href: `${x.folder}`,
+                                   });
+                                   let t = $(`<span>Try</span>`);
+                                   let ar = $(`<i></i>`, {
+                                        class: "mif-chevron-right mif-3x",
+                                   });
+                                   t.appendTo(action);
+                                   ar.appendTo(action);
+                                   num.appendTo(li);
+                                   date.appendTo(li);
+                                   detail.appendTo(li);
+                                   action.appendTo(li);
+                                   li.appendTo(ql);
+                              });
+                              ql.appendTo($(`div#${v.batch}-card-content-m5`));
+                         }
+                         //m6
+                         let q5 = v.quizzes.filter((x) => x.module == "06");
+                         if (q5.length > 0) {
+                              let d1 = $(
+                                   `<div>${v.title} <sup>${v.round}</sup> quiz</div>`,
+                                   {
+                                        class: "title",
+                                   }
+                              );
+                              let d2 = $(`<div>module 06</div>`, {
+                                   class: "subtitle",
+                              });
+                              console.log($(`div#${v.batch}-card-header-m6`));
+                              console.log(q5);
+                              d1.appendTo($(`div#${v.batch}-card-header-m6`));
+                              d2.appendTo($(`div#${v.batch}-card-header-m6`));
+                              let ql = $("<ol>", { class: "ql" });
+                              q5.forEach((x, i) => {
+                                   let li = $("<li>", { class: "ql-li" });
+                                   let num = $(`<span>${x.no}</span>`, {
+                                        class: "num fg-crimson",
+                                   });
+                                   let date = $(`<span>${x.date}</span>`, {
+                                        class: "date bg-olive fg-white",
+                                   });
+                                   let detail = $(`<div>${x.coverage}</div>`, {
+                                        class: "detail",
+                                   });
+                                   let action = $(`<a></a>`, {
+                                        class: "action ribbed-crimson fg-white",
+                                        href: `${x.folder}`,
+                                   });
+                                   let t = $(`<span>Try</span>`);
+                                   let ar = $(`<i></i>`, {
+                                        class: "mif-chevron-right mif-3x",
+                                   });
+                                   t.appendTo(action);
+                                   ar.appendTo(action);
+                                   num.appendTo(li);
+                                   date.appendTo(li);
+                                   detail.appendTo(li);
+                                   action.appendTo(li);
+                                   li.appendTo(ql);
+                              });
+                              ql.appendTo($(`div#${v.batch}-card-content-m6`));
+                         }
+                    });
+               });
+          </script>
+     </body>
+</html>

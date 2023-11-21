@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('./css/font-awesome.css');
+ * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Lato', sans-serif;
+}
+/*
+ * nav
+ */
+nav {
+    color: #fff;
+    background-color: #ee6e73;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    
+}
+nav  a {
+    display: block;
+    transition: background-color .3s;
+    font-size: 1rem;
+    color: #fff;
+    display: block;
+    padding: 25px 15px;
+    cursor: pointer;
+    width: 120px;
+    text-decoration: none;
+    text-align: center;
+}
+nav a:hover{
+    background-color: #e53935;
+}
+.brand {
+    width: 200px;
+    font-weight: 700;
+    
+}
+nav  a.icon{
+    display: none;
+    width: 50px;
+}
+/*
+ * Card
+ */
+ .card {
+    
+    margin: .5rem 2rem 1rem 2rem;
+    background-color: #546e7a !important;
+   
+    border-radius: 2px;
+}
+.card-content {
+    padding: 24px;
+    border-radius: 0 0 2px 2px;
+    color: #fff !important;
+    
+}
+.card-content p {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.card-title {
+    display: block;
+    line-height: 32px;
+    margin-bottom: 8px;
+    font-size: 1.75rem;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(160,160,160,0.2);
+}
+/*
+ * Form input
+ */
+ .input-add-on {
+    display: flex;
+    margin-bottom: 1.5em;
+  }
+  
+  .input-add-on-ctrl {
+    flex: 1;
+  }
+  .input-add-on-ctrl:not(:first-child) {
+    border-left: 0;
+  }
+  .input-add-on-ctrl:not(:last-child) {
+    border-right: 0;
+  }
+  
+  .input-add-on-btn {
+    color: #fff;
+    background-color: #26a69a;
+    font: inherit;
+    font-weight: normal;
+  }
+  
+  .input-add-on-ctrl,
+  .input-add-on-btn {
+    border: 1px solid #26a69a;
+    padding: 0.5em 0.75em;
+  }
+  .input-add-on-btn[disabled] {
+    border: 1px solid rgba(147, 128, 108, 0.25);
+    padding: 0.5em 0.75em;
+    background-color: gray;
+  }
+  .input-add-on-ctrl:first-child,
+  .input-add-on-btn:first-child {
+    border-radius: 2px 0 0 2px;
+  }
+  .input-add-on-field:last-child,
+  .input-add-on-item:last-child {
+    border-radius: 0 2px 2px 0;
+  }
+@media only screen and (max-width: 600px){
+    nav {
+        color: #fff;
+        background-color: #ee6e73;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        
+    }
+    nav  a:not(:first-child) {
+        
+        display: none;
+        
+    }
+    nav  a.icon{
+        z-index: 99;
+        display: block;
+        width: 50px;
+        position: fixed;
+        right:0;
+        top:0;
+    }
+    nav.responsive a:not(.icon) {
+        display: block;
+        width: 100%;
+    }
+    .brand {
+        width: 100%;
+        
+    }
+}

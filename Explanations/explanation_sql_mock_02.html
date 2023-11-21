@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          />
+          <title>ACSL: Online Quiz Application</title>
+          <link
+               rel="stylesheet"
+               href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          />
+          <link rel="stylesheet" href="../css/metro-all.css" />
+          <link rel="stylesheet" href="../css/metro-colors.css" />
+          <link rel="stylesheet" href="../css/style.css" />
+          <style>
+               body {
+                    padding-top: 60px;
+               }
+          </style>
+     </head>
+     <body>
+          <div
+               data-role="appbar"
+               data-expand-point="md"
+               class="bg-white fg-black border-bottom bd-lightGray py-1"
+          >
+               <button type="button" class="hamburger menu-down dark">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+               </button>
+               <a href="#" class="brand no-hover">
+                    <span
+                         style="width: 150px"
+                         class="
+                              text-center
+                              border
+                              bd-gray
+                              border-radius
+                              bg-white
+                              fg-black
+                         "
+                    >
+                         quiz<sup>AT</sup> online
+                    </span>
+               </a>
+
+               <ul class="app-bar-menu">
+                    <li><a href="../index.html">Home</a></li>
+
+                    <li><a href="../howto.html">How to</a></li>
+               </ul>
+          </div>
+          <div class="container-fluid mt-4">
+               <div class="card mx-auto" style="width: 97.5%">
+                    <div
+                         class="card-header bg-olive fg-white"
+                         id="OL-WADA-04-card-header-m2"
+                    >
+                         <div class="title">explanations</div>
+                         <div class="subtitle">question 08</div>
+                    </div>
+                    <div
+                         class="card-content p-1"
+                         id="OL-WADA-04-card-content-m2"
+                    >
+                         <div class="p-3 fg-black">
+                              CREATE TABLE T1 <br />
+                              ( <br />
+                              C1 INT, <br />
+                              C2 INT <br />
+                              )<br />
+                              GO <br />
+                              ALTER TABLE T1<br />
+                              ADD CHECK (C1 < 100) <br />
+                              --This will work as Table has no rows <br />
+                              GO <br />
+                              INSERT INTO T1 VALUES (1, 50), (2, 60) <br />
+                              GO <br />
+                              SELECT * FROM T1 <br />
+                              GO <br />
+                              --Now table has two rows <br />
+                              GO <br />
+                              ALTER TABLE T1 <br />
+                              ADD CHECK (C2 > 100) <br />
+                              GO <br />
+                              --This will fail as C2 has colum values 50 in Row
+                              1 and 60 <br />
+                              --in Row 2 which are not valid if we set C2 > 100
+                              <br />
+                              -- <br />
+                              ALTER TABLE T1 <br />
+                              WITH NOCHECK <br />
+                              ADD CHECK (C2 > 100) <br />
+                              --This will work, we are telling here "Do not
+                              check the data which are in <br />
+                              --the table. But if you add new row after applying
+                              the check contraint, <br />
+                              --You must give value for C2 more than 100 <br />
+                              GO <br />
+                              INSERT INTO T1 VALUES(3, 110) --ok<br />
+                              INSERT INTO T1 VALUES(3, 70) --fails<br />
+                              GO<br />
+                              SELECT * FROM T1<br />
+                              GO<br />
+                         </div>
+                    </div>
+                    <div class="card-footer">
+                         <a class="button dark outline" href="https://acsl-habib.github.io/OL04/">
+                              <span class="mif-arrow-left fg-red"></span
+                              >&nbsp;Back to dashboard
+                              </a>
+                    </div>
+               </div>
+               <div class="card mx-auto" style="width: 97.5%">
+                    <div
+                         class="card-header bg-olive fg-white"
+                         id="OL-WADA-04-card-header-m2"
+                    >
+                         <div class="title">explanations</div>
+                         <div class="subtitle">question 10</div>
+                    </div>
+                    <div
+                         class="card-content p-1"
+                         id="OL-WADA-04-card-content-m2"
+                    >
+                         <div class="p-3 fg-black">
+                              CREATE TABLE PK1 <br />
+                              ( <br />
+                              pkid INT PRIMARY KEY,<br />
+                              pname VARCHAR(30) NOT NULL<br />
+                              )<br />
+                              GO<br />
+                              /*<br />
+                              * SYNTAX<br />
+                              * REFRENCES table-name (colimn-name) ON UPDATE SET
+                              DEFAULT/NULL/NO ACTION/CASCADE ON DELETE SET
+                              DEFAULT/NULL/NO ACTION/CASCADE<br />
+                              * DEFAULT NO ACTION -- means reject the action and
+                              raise error <br />
+                              * If you do not add no rule, just REFRENCES
+                              table-name (colimn-name) default rule (NO ACTION)
+                              is assumed<br />
+                              * */ <br />
+                              <br />
+                              CREATE TABLE FK1<br />
+                              (<br />
+                              fkid INT PRIMARY KEY,<br />
+                              points INT NOT NULL,<br />
+                              pkid INT NOT NULL REFERENCES PK1(pkid) ON DELETE
+                              NO ACTION<br />
+                              )<br />
+                              GO<br />
+                              INSERT INTO PK1 VALUES (1, 'A'), (2, 'B')<br />
+                              GO<br />
+                              INSERT INTO FK1 VALUES (1, 20, 1) --Ok<br />
+                              INSERT INTO FK1 VALUES (1, 20, 10) --Invalid FK,
+                              error will be raised<br />
+                              GO<br />
+                              CREATE TABLE PK2<br />
+                              (<br />
+                              pkid INT PRIMARY KEY,<br />
+                              pname VARCHAR(30) NOT NULL<br />
+                              )<br />
+                              GO
+                         </div>
+                    </div>
+                    <div class="card-footer">
+                         <a class="button dark outline" href="https://acsl-habib.github.io/OL04/">
+                              <span class="mif-arrow-left fg-red"></span
+                              >&nbsp;Back to dashboard
+                              </a>
+                    </div>
+               </div>
+               <div class="card mx-auto" style="width: 97.5%">
+                    <div
+                         class="card-header bg-olive fg-white"
+                         id="OL-WADA-04-card-header-m2"
+                    >
+                         <div class="title">explanations</div>
+                         <div class="subtitle">question 11</div>
+                    </div>
+                    <div
+                         class="card-content p-1"
+                         id="OL-WADA-04-card-content-m2"
+                    >
+                         <div class="p-3 fg-black">
+                              CREATE TABLE FK2<br />
+                              (<br />
+                              fkid INT PRIMARY KEY,<br />
+                              points INT NOT NULL,<br />
+                              pkid INT NOT NULL REFERENCES PK2(pkid) ON DELETE
+                              CASCADE<br />
+                              )<br />
+                              GO<br />
+                              INSERT INTO PK2 VALUES (1, 'A'), (2, 'B')<br />
+                              GO<br />
+                              INSERT INTO FK2 VALUES (1, 20, 1) <br />
+                              INSERT INTO FK2 VALUES (2, 20, 1) <br />
+                              INSERT INTO FK2 VALUES (3, 20, 2)<br />
+                              GO<br />
+                              SELECT * FROM PK2<br />
+                              SELECT * FROM FK2<br />
+                              GO<br />
+                              DELETE FROM PK2 WHERE pkid=1 -- it will delete one
+                              row from PK2 and two child row from FK2 <br />
+                              GO<br />
+                              SELECT * FROM PK2<br />
+                              SELECT * FROM FK2<br />
+                              GO<br />
+                         </div>
+                    </div>
+                    <div class="card-footer">
+                         <a class="button dark outline" href="https://acsl-habib.github.io/OL04/">
+                              <span class="mif-arrow-left fg-red"></span
+                              >&nbsp;Back to dashboard
+                        </a>
+                    </div>
+               </div>
+          </div>
+
+          <script src="../js/metro.js"></script>
+     </body>
+</html>
+<br />
