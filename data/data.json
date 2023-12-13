@@ -122,7 +122,20 @@
                     "date": "Oct 21, 2023",
                     "coverage": "Preparatory",
                     "folder": "M1/CF17"
-               }
+               },
+               {"module": "02", "no": 1, "date": "Dec 12 2021", "coverage":"Retrieve data from a single table" , "folder":"M2/SQL01"},
+               {"module": "02", "no": 2, "date": "Dec 12 2021", "coverage":"Retrieve data from two or more tables" , "folder":"M2/SQL02"},
+               {"module": "02", "no": 3, "date": "Dec 12 2021", "coverage":"Summary queries" , "folder":"M2/SQL03"},
+               {"module": "02", "no": 4, "date": "Dec 12 2021", "coverage":"Insert, update and delete data" , "folder":"M2/SQL04"},
+               {"module": "02", "no": 5, "date": "Dec 12 2021", "coverage":"Data types" , "folder":"M2/SQL05"},
+               {"module": "02", "no": 6, "date": "Dec 12 2021", "coverage":"Preparatory: Section 1 to 3" , "folder":"M2/SQLMock01"},
+               {"module": "02", "no": 7, "date": "Dec 12 2021", "coverage":"Preparatory: Section 1 to 3" , "folder":"M2/SQLMock02"},
+               {"module": "02", "no": 8, "date": "Dec 20 2021", "coverage":"Built-in functions" , "folder":"https://forms.office.com/r/C49Gf47Xxn"},
+               {"module": "02", "no": 9, "date": "Dec 20 2021", "coverage":"Database design" , "folder":"https://forms.office.com/r/kgchABYbQw"},
+               {"module": "02", "no": 10, "date": "Dec 21 2021", "coverage":"Create database & tables" , "folder":"M2/SQL10"},
+               {"module": "02", "no": 11, "date": "Dec 23 2021", "coverage":"Work with views" , "folder":"https://forms.gle/FddxUC9ttqmPeBx76"},
+               {"module": "02", "no": 12, "date": "Dec 26 2021", "coverage":"Code scripts" , "folder":"M2/SQL12"},
+               {"module": "02", "no": 13, "date": "Dec 27 2021", "coverage":"Views, Procedures, Functions and Triggers" , "folder":"M2/SQL13"}
 
           ]
      }
